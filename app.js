@@ -18,6 +18,8 @@ app.get('/', stormpath.getUser, (req, res) => {
     title: 'Welcome'
   });
 });
+
+app.use('/profile',stormpath.loginRequired,require('./profile')());
  
 app.on('stormpath.ready', () => {
   console.log('Stormpath Ready');
